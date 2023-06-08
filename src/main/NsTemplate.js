@@ -6,44 +6,22 @@ import NsMain from './NsMain';
 import NsFootter from './NsFootter';
 
 const NsTemplate = () => {
-  const headerRef = useRef(null);
 
-  useEffect(() => {
-    const header = headerRef.current;
-    let prevScrollPos = window.pageYOffset;
 
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const headerHeight = header.offsetHeight;
+  
 
-      if (prevScrollPos > currentScrollPos) {
-        // 스크롤을 올릴 때
-        header.style.top = '0';
-      } else {
-        // 스크롤을 내릴 때
-        if (currentScrollPos > headerHeight) {
-          header.style.top = `-${headerHeight}px`;
-        }
-      }
 
-      prevScrollPos = currentScrollPos;
-    };
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+  
   return (
     <div>
-      <div id='header' ref={headerRef}>
+      <div id='header'>
         <NsHeader />
       </div>
 
       <div id='main'>
         <NsMain />
+        {/* <NsItem /> */}
       </div>
 
       <div id='footer'>
